@@ -1,4 +1,5 @@
 {% load static %}
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -79,7 +80,7 @@
 									<a href="{% static 'index.html' %}">Home</a>
 								</li> 
 								<li><a href="#">Contact</a></li>
-								<li><a href="#">Sign in</a></li>
+								<li><a href="accounts/register">Sign up</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -102,78 +103,33 @@
 		</div>
 
 
+
+		
+
 		<div class="fh5co-listing">
 			<div class="container">
 				<div class="row">
+				{% for dest in dests %}
 					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-1.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
+						<a class="fh5co-listing-item">						
+							<img src="{{dest.img.url}}" class="img-responsive">
 							<div class="fh5co-listing-copy">
-								<h2>Paris</h2>
+								<h2>{{dest.name}}</h2>
+								<h2>{{dest.price}}$</h2>
+								{% if dest.offer %}
+								<h2>50% off</h2>
+								{% endif%}
 								<span class="icon">
 									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
+								</span>					
+							</div>							
 						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-2.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>New York</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-3.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>London</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<!-- END 3 row -->
+					</div>	
+					
+					
 
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-4.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Amsterdam</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-5.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Australia</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 fh5co-item-wrap">
-						<a class="fh5co-listing-item">
-							<img src="{% static 'images/img-6.jpg' %}" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-							<div class="fh5co-listing-copy">
-								<h2>Japan</h2>
-								<span class="icon">
-									<i class="icon-chevron-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
 					<!-- END 3 row -->
+				{% endfor %}
 
 
 				</div>
